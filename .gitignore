@@ -1,4 +1,5 @@
 .pixi/
+__pycache__/
 
 # Prerequisites
 *.d
