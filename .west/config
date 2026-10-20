@@ -1,0 +1,7 @@
+[manifest]
+path = .
+file = west.yml
+
+[alias]
+pc = patch -sm . -l patches.yml -b patches clean
+pa = patch -sm . -l patches.yml -b patches apply
