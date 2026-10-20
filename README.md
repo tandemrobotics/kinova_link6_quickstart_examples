@@ -23,9 +23,11 @@ git clone https://github.com/tandemrobotics/kinova_link6_quickstart_examples # c
 cd kinova_link6_quickstart_examples                                          # navigate into directory
 ```
 
-[Rviz](https://docs.ros.org/en/lyrical/Developer-Tools/Visualization/RViz/RViz-Main.html)
-[Gazebo](https://gazebosim.org/home)
-[Mujoco](https://mujoco.org)
+<p>
+  <a href="https://docs.ros.org/en/jazzy/Tutorials/Intermediate/RViz/RViz-Main.html"><img src="assets/icons/rviz.png" height="32" alt="RViz"/></a>&nbsp;&nbsp;
+  <a href="https://gazebosim.org/home"><img src="assets/icons/gazebo.svg" height="32" alt="Gazebo"/></a>&nbsp;&nbsp;
+  <a href="https://mujoco.org"><img src="assets/icons/mujoco.png" height="32" alt="MuJoCo"/></a>
+</p>
 
 ## Downloads
 
