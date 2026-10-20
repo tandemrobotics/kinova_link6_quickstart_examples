@@ -1,0 +1,22 @@
+[workspace]
+requires-pixi = ">=0.72.1"
+channels = [
+    "https://prefix.dev/robostack-jazzy",
+    "https://prefix.dev/conda-forge",
+]
+platforms = [
+    { platform = "linux-64", glibc = "2.34" },
+    "osx-arm64",
+    { platform = "linux-aarch64", glibc = "2.36" },
+]
+
+[feature.kortex.dependencies]
+python = "3.11.*"
+pytest = ">=9.1"
+pyyaml = ">=6"
+
+[feature.kortex.pypi-dependencies]
+kortex-api = { url = "https://artifactory.kinovaapps.com/artifactory/generic-public/kortex/API/3.4.0/kortex_api-3.4.0.15-py3-none-any.whl" }
+
+[environments]
+kortex = ["kortex"]
