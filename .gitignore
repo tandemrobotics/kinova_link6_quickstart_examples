@@ -1,5 +1,8 @@
 .pixi/
 __pycache__/
+vendor/
+install/
+log/
 
 # Prerequisites
 *.d

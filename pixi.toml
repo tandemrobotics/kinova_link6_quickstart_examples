@@ -24,6 +24,10 @@ e2e-arm = { cmd = "pytest e2e/kinova_link6.py -v -s --robot-password {{ password
 ] }
 ci = { cmd = "pytest e2e/kinova_link6.py --collect-only -q" }
 
+[dependencies]
+west = "*"
+pykwalify = "*"
+
 [feature.jazzy.activation.env]
 ROS_DISTRO = "jazzy"
 ROS_DOMAIN_ID = "0"
@@ -34,7 +38,6 @@ python = "3.12.*"
 make = "*"
 cmake = "*"
 ninja = "*"
-west = "*"
 filelock = "*"
 compilers = "*"
 pkg-config = "*"
@@ -55,10 +58,13 @@ ros-jazzy-ros2launch = "*"
 ros-jazzy-rviz2 = "*"
 ros-jazzy-xacro = "*"
 ros-jazzy-std-msgs = "*"
+ros-jazzy-example-interfaces = "*"
 ros-jazzy-robot-state-publisher = "*"
+ros-jazzy-rosidl-default-generators = "*"
 ros-jazzy-rmw-zenoh-cpp = ">=0.2.9"
 
 ros-jazzy-ros2-control = "*"
+ros-jazzy-ros2-control-cmake = "*"
 ros-jazzy-control-toolbox = "*"
 ros-jazzy-controller-manager = "*"
 ros-jazzy-gripper-controllers = "*"
@@ -76,6 +82,12 @@ ros-jazzy-moveit-simple-controller-manager = "*"
 ros-jazzy-moveit-task-constructor-capabilities = "*"
 
 ros-jazzy-mujoco-vendor = "*"
+
+[feature.jazzy.tasks]
+build = "colcon build --merge-install --base-paths vendor --packages-ignore kortex3_hardware cartesian_controller_simulation cartesian_controller_tests --cmake-args -DCMAKE_BUILD_TYPE=Release -DBUILD_TESTING=OFF"
+
+[feature.jazzy.target.osx-arm64.tasks]
+build = "colcon build --merge-install --base-paths vendor --packages-ignore kortex3_hardware cartesian_controller_simulation cartesian_controller_tests --cmake-args -DCMAKE_BUILD_TYPE=Release -DBUILD_TESTING=OFF -DCMAKE_SHARED_LINKER_FLAGS=-Wl,-dead_strip_dylibs -DCMAKE_EXE_LINKER_FLAGS=-Wl,-dead_strip_dylibs"
 
 [feature.jazzy.pypi-dependencies]
 mujoco = "*"

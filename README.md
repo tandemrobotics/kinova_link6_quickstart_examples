@@ -19,8 +19,23 @@ TODO: add banner image
 Install [Pixi](https://pixi.prefix.dev/latest/)
 
 ```
-git clone https://github.com/tandemrobotics/kinova_link6_quickstart_examples # clone repo
-cd kinova_link6_quickstart_examples                                          # navigate into directory
+git clone https://github.com/tandemrobotics/kinova_link6_quickstart_examples
+cd kinova_link6_quickstart_examples
+```
+
+Fetch the pinned vendor sources, and apply the recorded patches ([patches.yml](patches.yml)):
+
+```
+pixi r west update
+pixi r west pa
+```
+
+`west pa` / `west pc` are the apply/clean aliases defined in [.west/config](.west/config).
+
+Build the vendor packages:
+
+```
+pixi r -e jazzy build
 ```
 
 <p>

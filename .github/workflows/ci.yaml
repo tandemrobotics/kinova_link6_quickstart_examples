@@ -14,8 +14,8 @@ permissions:
     contents: read
 
 jobs:
-    hardware-examples:
-        name: Hardware examples (kortex)
+    hardware:
+        name: Hardware
         runs-on: ${{ matrix.os }}
         strategy:
             fail-fast: false
@@ -31,3 +31,27 @@ jobs:
                   cache-write: ${{ github.event_name == 'push' && github.ref_name == 'main' }}
             - name: Run the CI task
               run: pixi run -e kortex ci
+
+    simulation:
+        name: Simulation
+        runs-on: ${{ matrix.os }}
+        strategy:
+            fail-fast: false
+            matrix:
+                os: [ubuntu-latest, macos-latest]
+        steps:
+            - uses: actions/checkout@v4
+            - uses: prefix-dev/setup-pixi@v0.11.0
+              with:
+                  environments: >-
+                      default
+                      jazzy
+                  locked: true
+                  cache: true
+                  cache-write: ${{ github.event_name == 'push' && github.ref_name == 'main' }}
+            - name: Fetch pinned vendor sources
+              run: pixi run west update
+            - name: Apply recorded patches
+              run: pixi run west pa
+            - name: Build
+              run: pixi run -e jazzy build
