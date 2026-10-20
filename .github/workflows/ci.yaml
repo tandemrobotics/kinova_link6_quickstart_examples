@@ -1,0 +1,34 @@
+name: 🤖CI
+
+on:
+    pull_request:
+    push:
+        branches: ["main"]
+
+    workflow_dispatch:
+
+concurrency:
+    group: ${{ github.workflow }}-${{ github.ref }}
+    cancel-in-progress: true
+
+permissions:
+    contents: read
+
+jobs:
+    hardware-examples:
+        name: Hardware examples (kortex)
+        runs-on: ${{ matrix.os }}
+        strategy:
+            fail-fast: false
+            matrix:
+                os: [ubuntu-latest, macos-latest]
+        steps:
+            - uses: actions/checkout@v4
+            - uses: prefix-dev/setup-pixi@v0.11.0
+              with:
+                  environments: kortex
+                  locked: true
+                  cache: true
+                  cache-write: ${{ github.event_name == 'push' && github.ref_name == 'main' }}
+            - name: Run the CI task
+              run: pixi run -e kortex ci
