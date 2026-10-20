@@ -24,5 +24,65 @@ e2e-arm = { cmd = "pytest e2e/kinova_link6.py -v -s --robot-password {{ password
 ] }
 ci = { cmd = "pytest e2e/kinova_link6.py --collect-only -q" }
 
+[feature.jazzy.activation.env]
+ROS_DISTRO = "jazzy"
+ROS_DOMAIN_ID = "0"
+RMW_IMPLEMENTATION = "rmw_zenoh_cpp"
+
+[feature.jazzy.dependencies]
+python = "3.12.*"
+make = "*"
+cmake = "*"
+ninja = "*"
+west = "*"
+filelock = "*"
+compilers = "*"
+pkg-config = "*"
+colcon-common-extensions = "*"
+ros-jazzy-ament-cmake-auto = "*"
+
+fmt = "*"
+glfw = "*"
+eigen = "3.*"
+
+ros-jazzy-ros2cli = "*"
+ros-jazzy-ros2run = "*"
+ros-jazzy-ros2node = "*"
+ros-jazzy-ros2topic = "*"
+ros-jazzy-ros2action = "*"
+ros-jazzy-ros2launch = "*"
+
+ros-jazzy-rviz2 = "*"
+ros-jazzy-xacro = "*"
+ros-jazzy-std-msgs = "*"
+ros-jazzy-robot-state-publisher = "*"
+ros-jazzy-rmw-zenoh-cpp = ">=0.2.9"
+
+ros-jazzy-ros2-control = "*"
+ros-jazzy-control-toolbox = "*"
+ros-jazzy-controller-manager = "*"
+ros-jazzy-gripper-controllers = "*"
+ros-jazzy-joint-state-broadcaster = "*"
+ros-jazzy-joint-trajectory-controller = "*"
+
+ros-jazzy-moveit-py = "*"
+ros-jazzy-moveit-planners = "*"
+ros-jazzy-moveit-kinematics = "*"
+ros-jazzy-moveit-configs-utils = "*"
+ros-jazzy-moveit-ros-move-group = "*"
+ros-jazzy-moveit-ros-visualization = "*"
+ros-jazzy-moveit-task-constructor-core = "*"
+ros-jazzy-moveit-simple-controller-manager = "*"
+ros-jazzy-moveit-task-constructor-capabilities = "*"
+
+ros-jazzy-mujoco-vendor = "*"
+
+[feature.jazzy.pypi-dependencies]
+mujoco = "*"
+obj2mjcf = "*"
+pycollada = "*"
+trimesh = "*"
+
 [environments]
 kortex = ["kortex"]
+jazzy = ["jazzy"]
