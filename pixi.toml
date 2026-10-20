@@ -18,5 +18,11 @@ pyyaml = ">=6"
 [feature.kortex.pypi-dependencies]
 kortex-api = { url = "https://artifactory.kinovaapps.com/artifactory/generic-public/kortex/API/3.4.0/kortex_api-3.4.0.15-py3-none-any.whl" }
 
+[feature.kortex.tasks]
+e2e-arm = { cmd = "pytest e2e/kinova_link6.py -v -s --robot-password {{ password }}", args = [
+    { arg = "password", default = "admin" },
+] }
+ci = { cmd = "pytest e2e/kinova_link6.py --collect-only -q" }
+
 [environments]
 kortex = ["kortex"]
