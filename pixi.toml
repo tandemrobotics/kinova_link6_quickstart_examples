@@ -28,6 +28,9 @@ ci = { cmd = "pytest e2e/kinova_link6.py --collect-only -q" }
 west = "*"
 pykwalify = "*"
 
+[feature.jazzy.activation]
+scripts = ["install/setup.sh"]
+
 [feature.jazzy.activation.env]
 ROS_DISTRO = "jazzy"
 ROS_DOMAIN_ID = "0"
@@ -84,12 +87,16 @@ ros-jazzy-moveit-task-constructor-capabilities = "*"
 ros-jazzy-mujoco-vendor = "*"
 
 [feature.jazzy.tasks]
-build = "colcon build --merge-install --base-paths vendor --packages-ignore kortex3_hardware cartesian_controller_simulation cartesian_controller_tests --cmake-args -DCMAKE_BUILD_TYPE=Release -DBUILD_TESTING=OFF"
+build = "colcon build --merge-install --base-paths vendor robot_description --packages-ignore kortex3_hardware cartesian_controller_simulation cartesian_controller_tests --cmake-args -DCMAKE_BUILD_TYPE=Release -DBUILD_TESTING=OFF"
+sim = { cmd = "python simulation/launch/arm_mujoco.launch.py", depends-on = [
+    "build",
+] }
 
 [feature.jazzy.target.osx-arm64.tasks]
-build = "colcon build --merge-install --base-paths vendor --packages-ignore kortex3_hardware cartesian_controller_simulation cartesian_controller_tests --cmake-args -DCMAKE_BUILD_TYPE=Release -DBUILD_TESTING=OFF -DCMAKE_SHARED_LINKER_FLAGS=-Wl,-dead_strip_dylibs -DCMAKE_EXE_LINKER_FLAGS=-Wl,-dead_strip_dylibs"
+build = "colcon build --merge-install --base-paths vendor robot_description --packages-ignore kortex3_hardware cartesian_controller_simulation cartesian_controller_tests --cmake-args -DCMAKE_BUILD_TYPE=Release -DBUILD_TESTING=OFF -DCMAKE_SHARED_LINKER_FLAGS=-Wl,-dead_strip_dylibs -DCMAKE_EXE_LINKER_FLAGS=-Wl,-dead_strip_dylibs"
 
 [feature.jazzy.pypi-dependencies]
+better-launch = { path = "vendor/better_launch", editable = true }
 mujoco = "*"
 obj2mjcf = "*"
 pycollada = "*"
