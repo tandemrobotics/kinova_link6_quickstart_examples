@@ -25,6 +25,7 @@ def write_rendered_scene_file():
 
 DESCRIPTION_PACKAGE = 'link6_description'
 CONTROL_PACKAGE = 'link6_control'
+MOVEIT_PACKAGE = 'link6_moveit_config'
 ROBOT_NAME = 'link6'
 GRIPPER = 'robotiq_2f_85'
 
@@ -82,9 +83,25 @@ def arm_mujoco_simulation():
     spawn_controller('robotiq_gripper_controller')
 
     bl.process(
-        'rviz2 -d ' + os.path.join(
-            install_directory, 'share', CONTROL_PACKAGE, 'config',
-            'link6_config.rviz')
+        'python manipulation/src/mujoco_planning_scene.py',
+        name='mujoco_planning_scene',
+    )
+    bl.include(
+        MOVEIT_PACKAGE, 'move_group.launch.py',
+        pass_launch_func_args=False,
+        use_sim_time='true',
+        capabilities='move_group/ExecuteTaskSolutionCapability',
+    )
+    bl.include(
+        'play_motion2', 'play_motion2.launch.py',
+        pass_launch_func_args=False,
+        motions_file=os.path.abspath('manipulation/config/motions.yaml'),
+        motion_planner_config=os.path.abspath(
+            'manipulation/config/motion_planner.yaml'),
+        use_sim_time='true',
+    )
+    bl.process(
+        'rviz2 -d ' + os.path.abspath('manipulation/config/moveit.rviz')
         + ' --ros-args -p use_sim_time:=true',
         name='rviz',
     )
