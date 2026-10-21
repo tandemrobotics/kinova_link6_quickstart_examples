@@ -44,6 +44,8 @@ Launch the simulation (RViz+MuJoCo ):
 pixi r sim
 ```
 
+![MoveIt motion planning in RViz with the Link 6 and a MuJoCo-synced apple](assets/moveit-rviz.png)
+
 <p>
   <a href="https://docs.ros.org/en/jazzy/Tutorials/Intermediate/RViz/RViz-Main.html"><img src="assets/icons/rviz.png" height="32" alt="RViz"/></a>&nbsp;&nbsp;
   <a href="https://gazebosim.org/home"><img src="assets/icons/gazebo.svg" height="32" alt="Gazebo"/></a>&nbsp;&nbsp;
