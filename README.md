@@ -35,7 +35,13 @@ pixi r west pa
 Build the vendor packages:
 
 ```
-pixi r -e jazzy build
+pixi r build
+```
+
+Launch the simulation (RViz+MuJoCo ):
+
+```
+pixi r sim
 ```
 
 <p>
