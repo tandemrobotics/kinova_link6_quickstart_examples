@@ -23,7 +23,8 @@ Visualization Manager:
         State Display Time: 0.05 s
         Trajectory Topic: display_planned_path
       Planning Request:
-        Query Goal State: false
+        Interactive Marker Size: 0.15
+        Query Goal State: true
         Query Start State: false
       Planning Scene Topic: monitored_planning_scene
       Robot Description: robot_description

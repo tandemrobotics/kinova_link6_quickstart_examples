@@ -102,6 +102,7 @@ def arm_mujoco_simulation():
     )
     bl.process(
         'rviz2 -d ' + os.path.abspath('manipulation/config/moveit.rviz')
-        + ' --ros-args -p use_sim_time:=true',
+        + ' --ros-args -p use_sim_time:=true --params-file '
+        + os.path.abspath('manipulation/config/rviz_kinematics.yaml'),
         name='rviz',
     )
