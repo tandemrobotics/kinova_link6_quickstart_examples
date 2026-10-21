@@ -57,6 +57,20 @@ pixi r sim
   </tr>
 </table>
 
+With the simulation running, pick up the apple with the [MoveIt Task Constructor](https://moveit.github.io/moveit_task_constructor/):
+
+```
+pixi r pick
+```
+
+<table>
+  <tr>
+    <td><img src="assets/rviz-screenshot-5.png" alt="Goal state hovering above the apple"/></td>
+    <td><img src="assets/rviz-screenshot-6.png" alt="Gripper lowered onto the apple"/></td>
+    <td><img src="assets/rviz-screenshot-7.png" alt="Apple grasped and attached to the gripper"/></td>
+  </tr>
+</table>
+
 <p>
   <a href="https://docs.ros.org/en/jazzy/Tutorials/Intermediate/RViz/RViz-Main.html"><img src="assets/icons/rviz.png" height="32" alt="RViz"/></a>&nbsp;&nbsp;
   <a href="https://gazebosim.org/home"><img src="assets/icons/gazebo.svg" height="32" alt="Gazebo"/></a>&nbsp;&nbsp;
