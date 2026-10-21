@@ -95,13 +95,16 @@ pyyaml = "*"
 setproctitle = "*"
 
 [feature.jazzy.tasks]
-build = "colcon build --merge-install --base-paths vendor robot_description --packages-ignore kortex3_hardware cartesian_controller_simulation cartesian_controller_tests --cmake-args -DCMAKE_BUILD_TYPE=Release -DBUILD_TESTING=OFF"
+build = "colcon build --merge-install --base-paths vendor robot_description manipulation --packages-ignore kortex3_hardware cartesian_controller_simulation cartesian_controller_tests --cmake-args -DCMAKE_BUILD_TYPE=Release -DBUILD_TESTING=OFF"
 sim = { cmd = "python simulation/launch/arm_mujoco.launch.py", depends-on = [
     "build",
 ] }
+pick = { cmd = "python manipulation/launch/kinova_link6_pick.launch.py --object {{ object }}", args = [
+    { arg = "object", default = "apple" },
+] }
 
 [feature.jazzy.target.osx-arm64.tasks]
-build = "colcon build --merge-install --base-paths vendor robot_description --packages-ignore kortex3_hardware cartesian_controller_simulation cartesian_controller_tests --cmake-args -DCMAKE_BUILD_TYPE=Release -DBUILD_TESTING=OFF -DCMAKE_SHARED_LINKER_FLAGS=-Wl,-dead_strip_dylibs -DCMAKE_EXE_LINKER_FLAGS=-Wl,-dead_strip_dylibs"
+build = "colcon build --merge-install --base-paths vendor robot_description manipulation --packages-ignore kortex3_hardware cartesian_controller_simulation cartesian_controller_tests --cmake-args -DCMAKE_BUILD_TYPE=Release -DBUILD_TESTING=OFF -DCMAKE_SHARED_LINKER_FLAGS=-Wl,-dead_strip_dylibs -DCMAKE_EXE_LINKER_FLAGS=-Wl,-dead_strip_dylibs"
 
 [feature.jazzy.pypi-dependencies]
 mujoco = "*"
