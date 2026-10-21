@@ -44,7 +44,18 @@ Launch the simulation (RViz+MuJoCo ):
 pixi r sim
 ```
 
-![MoveIt motion planning in RViz with the Link 6 and a MuJoCo-synced apple](assets/moveit-rviz.png)
+<table>
+  <tr>
+    <td><img src="assets/rviz-screenshot-1.png" alt="MoveIt motion planning in RViz with the Link 6 and a MuJoCo-synced apple"/></td>
+    <td><img src="assets/rviz-screenshot-2.png" alt="Drag-to-pose gizmo at the gripper"/></td>
+    <td><img src="assets/rviz-screenshot-3.png" alt="Orange goal state posed away from the start state"/></td>
+  </tr>
+  <tr>
+    <td><img src="assets/rviz-screenshot-4.png" alt="Goal state reaching across the workspace"/></td>
+    <td></td>
+    <td></td>
+  </tr>
+</table>
 
 <p>
   <a href="https://docs.ros.org/en/jazzy/Tutorials/Intermediate/RViz/RViz-Main.html"><img src="assets/icons/rviz.png" height="32" alt="RViz"/></a>&nbsp;&nbsp;
